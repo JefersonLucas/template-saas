@@ -7,7 +7,6 @@ import { redirect } from "next/navigation"
 export default async function Dashboard() {
 	// Estamos no lado do servidor
 	const session = await auth()
-	console.log(session)
 
 	if (!session) {
 		redirect("/login")
