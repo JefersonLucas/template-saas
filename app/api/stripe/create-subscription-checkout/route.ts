@@ -18,13 +18,13 @@ export async function POST(req: NextRequest) {
 		testeId,
 	}
 
-	// Precisamso criar um cliente na Stripe para ter referência quando for criar o portal
+	// Precisamos criar um cliente na Stripe para ter referência quando for criar o portal
 
 	try {
 		const session = await stripe.checkout.sessions.create({
 			line_items: [{ price, quantity: 1 }],
 			mode: "payment",
-			payment_method_types: ["card", "boleto"],
+			payment_method_types: ["card"],
 			success_url: `${req.headers.get("origin")}/success`,
 			cancel_url: `${req.headers.get("origin")}/`,
 			metadata,
